@@ -2,15 +2,15 @@
     Пример функции-декоратора для создания атрибута свойство для класса
 """
 def decor(name):
-    def wrapper(Class):
+    def wrapper(cls):
         def wrapper2():
             privateName = '__' + name
             def getter(self):
                 return getattr(self, privateName)
             def setter(self):
                 setattr(self, privateName)
-            setattr(Class, name, property(getter, setter))
-            return Class
+            setattr(cls, name, property(getter, setter))
+            return cls
         return wrapper2
     return wrapper
 
@@ -19,5 +19,5 @@ class MyClass:
     pass
 
 o = MyClass()
-o.x = 14
+o.x = 12
 print(o.x)
